@@ -50,3 +50,19 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export async function GET(req: NextRequest) {
+  try {
+    const endpoints = await db.mockEndpoint.findMany({
+      orderBy: { createdAt: 'desc' }
+    });
+
+    return NextResponse.json({ success: true, endpoints }, { status: 200 });
+  } catch (error) {
+    console.error("GET /api/endpoints error:", error);
+    return NextResponse.json(
+      { success: false, error: "Internal server error." },
+      { status: 500 }
+    );
+  }
+}
