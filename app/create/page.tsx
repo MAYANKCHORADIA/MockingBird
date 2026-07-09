@@ -86,7 +86,7 @@ export default function CreateEndpoint() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-medium text-slate-700">HTTP Status Code</label>
-                <Select value={httpStatus} onValueChange={setHttpStatus}>
+                <Select value={httpStatus} onValueChange={(val) => setHttpStatus(val || "200")}>
                   <SelectTrigger className="bg-slate-50 border-slate-200">
                     <SelectValue placeholder="Select Status" />
                   </SelectTrigger>
